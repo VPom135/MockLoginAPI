@@ -1,54 +1,70 @@
 package br.cefetmg.mockloginapi.dto;
 
-import java.util.List;
+import br.cefetmg.mockloginapi.entity.Campus;
 
-public class CampusDTO {
+public class DepartamentDTO {
 
     private int id;
+
     private String name;
-    private String adress;
     private String contactPhone;
     private String email;
-    private List<String> departaments;
 
+    private String campus;
 
+    public DepartamentDTO(int id, String name, String contactPhone, String email, String campus) {
+
+        setId(id);
+        setName(name);
+        setContactPhone(contactPhone);
+        setEmail(email);
+        setCampus(campus);
+
+    }
 
     //Getters
     public int getId() {
+
         return id;
+
     }
 
     public String getName() {
-        return name;
-    }
 
-    public String getAdress() {
-        return adress;
+        return name;
+
     }
 
     public String getContactPhone() {
+
         return contactPhone;
+
     }
 
     public String getEmail() {
+
         return email;
+
     }
 
-    public List<String> getDepartaments() {
-        return departaments;
+    public String getCampus() {
+
+        return campus;
+
     }
+
 
     //Setters
     public void setId(int id) {
+
         this.id = id;
+
     }
 
     public void setName(String name) {
-        this.name = name;
-    }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+        this.name = name;
+
     }
 
     public void setContactPhone(String contactPhone) {
@@ -59,8 +75,11 @@ public class CampusDTO {
         this.email = email;
     }
 
-    public void setDepartaments(List<String> departaments) {
-        this.departaments = departaments;
+    public void setCampus(String campus) {
+
+        this.campus = campus;
+
     }
+
 
 }

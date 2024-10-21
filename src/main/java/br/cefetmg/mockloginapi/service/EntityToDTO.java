@@ -1,61 +1,39 @@
 package br.cefetmg.mockloginapi.service;
 
 import br.cefetmg.mockloginapi.dto.CampusDTO;
-import br.cefetmg.mockloginapi.dto.DepartamentoDTO;
-import br.cefetmg.mockloginapi.dto.UsuarioDTO;
+import br.cefetmg.mockloginapi.dto.DepartamentDTO;
+import br.cefetmg.mockloginapi.dto.UserDTO;
 import br.cefetmg.mockloginapi.entity.Campus;
-import br.cefetmg.mockloginapi.entity.Departamento;
-import br.cefetmg.mockloginapi.entity.Usuario;
-
-import java.util.List;
+import br.cefetmg.mockloginapi.entity.Departament;
+import br.cefetmg.mockloginapi.entity.User;
 
 public class EntityToDTO {
 
-    static public UsuarioDTO ConvertUsuario(Usuario entity) {
+    static public UserDTO ConvertUsuario(User entity) {
 
-        UsuarioDTO usuarioDTO = new UsuarioDTO();
+        String departamentName = entity.getDepartament().getName();
 
-        usuarioDTO.setId(entity.getId());
+        UserDTO userDTO = new UserDTO(entity.getId(), entity.getName(), entity.getPassword(),
+                          entity.getCpf(), entity.getEmail(), entity.getIcon(), departamentName);
 
-        usuarioDTO.setNome(entity.getNome());
-        usuarioDTO.setCpf(entity.getCpf());
-        usuarioDTO.setSenha(entity.getSenha());
-        usuarioDTO.setEmail(entity.getEmail());
-
-        DepartamentoDTO departamentoDTO = ConvertDepartamento(entity.getDepartamento());
-
-        usuarioDTO.setDepartamento(departamentoDTO);
-
-        return usuarioDTO;
+        return userDTO;
 
     }
 
-    static public DepartamentoDTO ConvertDepartamento(Departamento entity) {
+    static public DepartamentDTO ConvertDepartamento(Departament entity) {
 
-        DepartamentoDTO departamentoDTO = new DepartamentoDTO();
+        String campusName = entity.getCampus().getName();
 
-        departamentoDTO.setId(entity.getId());
-        departamentoDTO.setNome(entity.getNome());
-        departamentoDTO.setTelefone(entity.getTelefone());
-        departamentoDTO.setEmail(entity.getEmail());
+        DepartamentDTO departamentDTO = new DepartamentDTO(entity.getId(), entity.getName(),
+                                        entity.getContactPhone(), entity.getEmail(), campusName);
 
-        CampusDTO campusDTO = ConvertCampus(entity.getCampus());
-
-        departamentoDTO.setCampus(campusDTO);
-
-        return departamentoDTO;
+        return departamentDTO;
 
     }
 
     static public CampusDTO ConvertCampus(Campus entity) {
 
         CampusDTO campusDTO = new CampusDTO();
-
-        campusDTO.setId(entity.getId());
-        campusDTO.setNome(entity.getNome());
-        campusDTO.setEndereco(entity.getEndereco());
-        campusDTO.setTelefone(entity.getTelefone());
-        campusDTO.setEmail(entity.getEndereco());
 
         return campusDTO;
 

@@ -1,7 +1,6 @@
 package br.cefetmg.mockloginapi.dao;
 
 import br.cefetmg.mockloginapi.entity.Campus;
-import br.cefetmg.mockloginapi.entity.Usuario;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;

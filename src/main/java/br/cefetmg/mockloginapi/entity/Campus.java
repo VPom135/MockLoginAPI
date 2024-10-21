@@ -10,38 +10,59 @@ public class Campus {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "campusid")
     private int id;
-    
-    private String nome;
-    private String endereco;
-    private String telefone;
+
+    @Column (name = "nome")
+    private String name;
+    @Column (name = "endereco")
+    private String adress;
+    @Column (name = "telefone")
+    private String contactPhone;
+    @Column (name = "email")
     private String email;
     
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "campus")
-    private List<Departamento> departamentos;
+    private List<Departament> departaments;
+
+    public Campus(int id, String name, String adress, String contactPhone, String email) {
+
+        setId(id);
+        setName(name);
+        setAdress(adress);
+        setContactPhone(contactPhone);
+        setEmail(email);
+
+    }
+
+    public Campus(int id, String name, String adress, String contactPhone, String email, List<Departament> departaments) {
+
+        new Campus(id, name, adress, contactPhone, email);
+        setDepartaments(departaments);
+
+    }
 
     //Getters
     public int getId() {
         return id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getAdress() {
+        return adress;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getContactPhone() {
+        return contactPhone;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public List<Departamento> getDepartamentos() {
-        return departamentos;
+    public List<Departament> getDepartaments() {
+        return departaments;
     }
 
     //Setters
@@ -49,24 +70,24 @@ public class Campus {
         this.id = id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setAdress(String adress) {
+        this.adress = adress;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setContactPhone(String contactPhone) {
+        this.contactPhone = contactPhone;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setDepartamentos(List<Departamento> departamentos) {
-        this.departamentos = departamentos;
+    public void setDepartaments(List<Departament> departaments) {
+        this.departaments = departaments;
     }
     
 }

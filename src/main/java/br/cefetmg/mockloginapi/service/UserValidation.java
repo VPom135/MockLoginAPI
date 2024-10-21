@@ -1,8 +1,10 @@
 package br.cefetmg.mockloginapi.service;
 
-import br.cefetmg.mockloginapi.dao.UsuarioDAO;
-import br.cefetmg.mockloginapi.entity.Usuario;
-import br.cefetmg.mockloginapi.dto.UsuarioDTO;
+import br.cefetmg.mockloginapi.dao.UserDAO;
+import br.cefetmg.mockloginapi.dto.DepartamentDTO;
+import br.cefetmg.mockloginapi.entity.Departament;
+import br.cefetmg.mockloginapi.entity.User;
+import br.cefetmg.mockloginapi.dto.UserDTO;
 import br.cefetmg.mockloginapi.exceptions.IncorrectPasswordException;
 import br.cefetmg.mockloginapi.exceptions.UserNotFoundException;
 
@@ -12,35 +14,101 @@ import javax.persistence.Persistence;
 
 public class UserValidation {
 
-    public static boolean checkForUser(String name) {
+    //private util
+    private static EntityManager getEntityManager() {
 
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("mockpersistence");
         EntityManager em = emf.createEntityManager();
 
-        UsuarioDAO uDao = new UsuarioDAO();
-        Usuario u = uDao.getByName(name, em);
-
-        return (u != null);
+        return em;
 
     }
 
-    public static UsuarioDTO validateLogin(String login, String password) throws UserNotFoundException, IncorrectPasswordException {
+    //public checkForUser
+    public static boolean checkForUser(String name) {
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("mockpersistence");
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = getEntityManager();
 
-        UsuarioDAO uDao = new UsuarioDAO();
-        Usuario u = uDao.getByName(login, em);
+        UserDAO userDao = new UserDAO();
+        User user = userDao.getByName(name, em);
 
-        if (u == null) {
+        return (user != null);
+
+    }
+
+    //public validateLogin
+    public static UserDTO validateLogin(String login, String password, boolean useNameAsLogin)
+                                        throws UserNotFoundException, IncorrectPasswordException {
+
+        EntityManager em = getEntityManager();
+
+        UserDAO userDao = new UserDAO();
+        User user;
+
+        if(useNameAsLogin)
+            user = userDao.getByName(login, em);
+        else
+            user = userDao.getByCpf(login, em);
+
+        if (user == null) {
             throw new UserNotFoundException("Usuário não encontrado no sistema.");
         }
 
-        if (!u.getSenha().equals(password)) {
+        if (!user.getPassword().equals(password)) {
             throw new IncorrectPasswordException("Senha incorreta.");
         }
 
-        return EntityToDTO.ConvertUsuario(u);
+        return EntityToDTO.ConvertUsuario(user);
+
+    }
+
+    // public getDepartamentDTO
+    public static DepartamentDTO getDepartamentDTO(String name) {
+
+        EntityManager em = getEntityManager();
+
+        UserDAO userDAO = new UserDAO();
+        User user = userDAO.getByName(name, em);
+        Departament departament = user.getDepartament();
+
+        return EntityToDTO.ConvertDepartamento(departament);
+
+    }
+
+    public static DepartamentDTO getDepartamentDTO(int id) {
+
+        EntityManager em = getEntityManager();
+
+        UserDAO userDAO = new UserDAO();
+        User user = userDAO.getById(id, em);
+        Departament departament = user.getDepartament();
+
+        return EntityToDTO.ConvertDepartamento(departament);
+
+    }
+
+    // public getDepartament
+    public static String getDepartament(String name) {
+
+        EntityManager em = getEntityManager();
+
+        UserDAO userDAO = new UserDAO();
+        User user = userDAO.getByName(name, em);
+        Departament departament = user.getDepartament();
+
+        return departament.getName();
+
+    }
+
+    public static String getDepartament(int id) {
+
+        EntityManager em = getEntityManager();
+
+        UserDAO userDAO = new UserDAO();
+        User user = userDAO.getById(id, em);
+        Departament departament = user.getDepartament();
+
+        return departament.getName();
 
     }
 
