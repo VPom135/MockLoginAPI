@@ -1,7 +1,7 @@
 package br.cefetmg.mockloginapi;
 
-import br.cefetmg.mockloginapi.dto.*;
 import br.cefetmg.mockloginapi.service.*;
+import br.cefetmg.mockloginapi.dto.*;
 
 import java.util.Scanner;
 
@@ -10,23 +10,23 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
+        boolean run = true;
 
-        while(true) {
+        while(run) {
 
             System.out.println("Selecione o teste a ser feito:");
             System.out.println("1 - Ajuda");
             System.out.println("2 - Login");
             System.out.println("3 - Pedir informação de departamento");
-            System.out.println("4 - Pedir informação de Campus");
-            System.out.println("5 - Sair");
+            System.out.println("4 - Sair");
 
-            chooseTest(scan);
+            run = chooseTest(scan);
 
         }
         
     }
 
-    private static void chooseTest(Scanner scan) {
+    private static boolean chooseTest(Scanner scan) {
 
         String input = scan.nextLine();
         input = input.toLowerCase();
@@ -35,9 +35,13 @@ public class Main {
             case "ajuda", "1" -> printHelp();
             case "login", "2" -> loginTest(scan);
             case "pedir informação de departamento", "departamento", "3" -> departamentAccessTest(scan);
-            case "pedir informação de campus", "campus", "4" -> campusAccessTest(scan);
+            case "sair", "4" -> {
+                return false;
+            }
             default -> System.out.println(("Input invalido"));
         };
+
+        return true;
 
     }
 
@@ -68,8 +72,8 @@ public class Main {
             password = scan.nextLine();
 
             try {
-                UserDTO user = UserValidation.validateLogin(login, password, false);
-                System.out.println("Login concluído! Bem vindo " + user.getName() + " seu CPF é: " + user.getCpf());
+                UsuarioDTO user = UsuarioValidation.validateLogin(login, password, false);
+                System.out.println("Login concluído! Bem vindo " + user.getNome() + " seu CPF é: " + user.getCpf());
                 loginEnded = true;
             } catch (Exception e) {
                 System.out.println(e.getMessage());
@@ -118,28 +122,28 @@ public class Main {
             String s;
             int i;
 
-            DepartamentDTO departamentDTO = null;
+            DepartamentoDTO dDTO = null;
 
             switch (accessMethod) {
 
                 case 1:
                     s = scan.nextLine();
-                    departamentDTO = DepartamentInfo.getDTO(s);
+                    dDTO = DepartamentoInfo.getDTO(s);
                     break;
 
                 case 2:
                     i = Integer.parseInt(scan.nextLine());
-                    departamentDTO = DepartamentInfo.getDTO(i);
+                    dDTO = DepartamentoInfo.getDTO(i);
                     break;
 
                 case 3:
                     s = scan.nextLine();
-                    departamentDTO = UserValidation.getDepartamentDTO(s);
+                    dDTO = UsuarioValidation.getDepartamentoDTO(s);
                     break;
 
                 case 4:
                     i = Integer.parseInt(scan.nextLine());
-                    departamentDTO = UserValidation.getDepartamentDTO(i);
+                    dDTO = UsuarioValidation.getDepartamentoDTO(i);
                     break;
 
                 default:
@@ -148,73 +152,10 @@ public class Main {
 
             }
 
-            if (departamentDTO!=null) {
+            if (dDTO!=null) {
 
-                System.out.println(departamentDTO.getName() + " encontrado! Ele está localizado no Campus "
-                                 + departamentDTO.getCampus() + ".");
-                accessTryEnded = true;
-
-            }
-
-        }
-
-    }
-
-    private static void campusAccessTest(Scanner scan) {
-
-        boolean accessTryEnded = false;
-
-        while(!accessTryEnded) {
-
-            System.out.println("Escolha qual informação usar para procurar no banco de dados:");
-            System.out.println("1 - nome do Campus.");
-            System.out.println("2 - id do Campus.");
-            System.out.println("3 - nome de um departamento do Campus.");
-            System.out.println("4 - id de um departamento do Campus.");
-
-            int accessMethod = chooseAccessMethod(scan);
-
-            if (accessMethod == 0) {
-                continue;
-            }
-
-            String s;
-            int i;
-
-            CampusDTO campusDTO = null;
-
-            switch (accessMethod) {
-
-                case 1:
-                    s = scan.nextLine();
-                    campusDTO = CampusInfo.getDTO(s);
-                    break;
-
-                case 2:
-                    i = Integer.parseInt(scan.nextLine());
-                    campusDTO = CampusInfo.getDTO(i);
-                    break;
-
-                case 3:
-                    s = scan.nextLine();
-                    campusDTO = DepartamentInfo.getDepartamentCampusDTO(s);
-                    break;
-
-                case 4:
-                    i = Integer.parseInt(scan.nextLine());
-                    campusDTO = DepartamentInfo.getDepartamentCampusDTO(i);
-                    break;
-
-                default:
-                    System.out.println("Input invalido.");
-                    break;
-
-            }
-
-            if (campusDTO!=null) {
-
-                System.out.println(campusDTO.getName() + " encontrado! Ele está localizado no Campus "
-                        + campusDTO + ".");
+                System.out.println(dDTO.getNome() + " encontrado! Ele está localizado no Campus "
+                                 + dDTO.getCampus() + ".");
                 accessTryEnded = true;
 
             }

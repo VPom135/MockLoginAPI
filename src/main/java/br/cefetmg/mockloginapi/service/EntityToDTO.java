@@ -1,41 +1,27 @@
 package br.cefetmg.mockloginapi.service;
 
-import br.cefetmg.mockloginapi.dto.CampusDTO;
-import br.cefetmg.mockloginapi.dto.DepartamentDTO;
-import br.cefetmg.mockloginapi.dto.UserDTO;
-import br.cefetmg.mockloginapi.entity.Campus;
-import br.cefetmg.mockloginapi.entity.Departament;
-import br.cefetmg.mockloginapi.entity.User;
+import br.cefetmg.mockloginapi.entity.*;
+import br.cefetmg.mockloginapi.dto.*;
 
 public class EntityToDTO {
 
-    static public UserDTO ConvertUsuario(User entity) {
+    static public UsuarioDTO ConvertUsuario(Usuario entity) {
 
-        String departamentName = entity.getDepartament().getName();
+        String departamentNome = entity.getDepartamento().getNome();
 
-        UserDTO userDTO = new UserDTO(entity.getId(), entity.getName(), entity.getPassword(),
-                          entity.getCpf(), entity.getEmail(), entity.getIcon(), departamentName);
+        UsuarioDTO uDTO = new UsuarioDTO(entity.getId(), entity.getNome(), entity.getCpf(),
+                          entity.getSenha(), entity.getFoto(), departamentNome);
 
-        return userDTO;
-
-    }
-
-    static public DepartamentDTO ConvertDepartamento(Departament entity) {
-
-        String campusName = entity.getCampus().getName();
-
-        DepartamentDTO departamentDTO = new DepartamentDTO(entity.getId(), entity.getName(),
-                                        entity.getContactPhone(), entity.getEmail(), campusName);
-
-        return departamentDTO;
+        return uDTO;
 
     }
 
-    static public CampusDTO ConvertCampus(Campus entity) {
+    static public DepartamentoDTO ConvertDepartamento(Departamento entity) {
 
-        CampusDTO campusDTO = new CampusDTO();
+        DepartamentoDTO dDTO = new DepartamentoDTO(entity.getId(), entity.getNome(),
+                                        entity.getTelefone(), entity.getEmail(), entity.getCampus());
 
-        return campusDTO;
+        return dDTO;
 
     }
 

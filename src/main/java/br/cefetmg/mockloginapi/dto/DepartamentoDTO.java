@@ -1,5 +1,7 @@
 package br.cefetmg.mockloginapi.dto;
 
+import br.cefetmg.mockloginapi.dao.DepartamentoDAO;
+
 import java.util.List;
 
 public class DepartamentoDTO {
@@ -9,8 +11,15 @@ public class DepartamentoDTO {
     private String nome;
     private String telefone;
     private String email;
+    private String campus;
 
-    private CampusDTO campus;
+    public DepartamentoDTO(int id, String nome, String telefone, String email, String campus) {
+        setId(id);
+        setNome(nome);
+        setTelefone(telefone);
+        setEmail(email);
+        setCampus(campus);
+    }
 
     //Getters
     public int getId() {
@@ -29,7 +38,7 @@ public class DepartamentoDTO {
         return email;
     }
 
-    public CampusDTO getCampus() {
+    public String getCampus() {
         return campus;
     }
 
@@ -51,7 +60,7 @@ public class DepartamentoDTO {
         this.email = email;
     }
 
-    public void setCampus(CampusDTO campus) {
+    public void setCampus(String campus) {
         this.campus = campus;
     }
 

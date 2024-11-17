@@ -1,7 +1,6 @@
 package br.cefetmg.mockloginapi.dao;
 
-import br.cefetmg.mockloginapi.entity.Departamento;
-import br.cefetmg.mockloginapi.entity.Usuario;
+//import br.cefetmg.mockloginapi.entity.Departamento;
 import br.cefetmg.mockloginapi.entity.Usuario;
 
 import javax.persistence.EntityManager;
@@ -21,10 +20,7 @@ public class UsuarioDAO implements DaoInterface<Usuario>{
 
     }
 
-    @Override
-    public Usuario getById(int id, EntityManager em) {
-        
-        String jpql = "SELECT u FROM Usuario u WHERE u.usuarioid = %d".formatted(id);
+    public Usuario getByJpql(String jpql, EntityManager em) {
 
         TypedQuery<Usuario> query = em.createQuery(jpql, Usuario.class);
 
@@ -35,6 +31,14 @@ public class UsuarioDAO implements DaoInterface<Usuario>{
         }
 
         return result.getFirst();
+
+    }
+
+    @Override
+    public Usuario getById(int id, EntityManager em) {
+        
+        String jpql = "SELECT u FROM Usuario u WHERE u.id = %d".formatted(id);
+        return getByJpql(jpql, em);
         
     }
 
@@ -42,16 +46,14 @@ public class UsuarioDAO implements DaoInterface<Usuario>{
     public Usuario getByName(String name, EntityManager em) {
 
         String jpql = "SELECT u FROM Usuario u WHERE u.nome LIKE '%s'".formatted(name);
+        return getByJpql(jpql, em);
 
-        TypedQuery<Usuario> query = em.createQuery(jpql, Usuario.class);
+    }
 
-        List<Usuario> result = query.getResultList();
+    public Usuario getByCpf(String cpf, EntityManager em) {
 
-        if (result.isEmpty()) {
-            return null;
-        }
-
-        return result.getFirst();
+        String jpql = "SELECT u FROM Usuario u WHERE u.cpf LIKE '%s'".formatted(cpf);
+        return getByJpql(jpql, em);
 
     }
     

@@ -1,7 +1,5 @@
 package br.cefetmg.mockloginapi.entity;
 
-import br.cefetmg.mockloginapi.entity.Campus;
-import br.cefetmg.mockloginapi.entity.User;
 import javax.annotation.processing.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;

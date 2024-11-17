@@ -20,19 +20,15 @@ public class Departamento {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "departamentoid")
     private int id;
     
     private String nome;
     private String telefone;
     private String email;
+    private String campus;
     
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "departamento")
     private List<Usuario> funcionarios;
-    
-    @ManyToOne
-    @JoinColumn(name = "campusid")
-    private Campus campus;
 
     //Getters
     public int getId() {
@@ -55,7 +51,7 @@ public class Departamento {
         return funcionarios;
     }
 
-    public Campus getCampus() {
+    public String getCampus() {
         return campus;
     }
 
@@ -81,7 +77,7 @@ public class Departamento {
         this.funcionarios = funcionarios;
     }
 
-    public void setCampus(Campus campus) {
+    public void setCampus(String campus) {
         this.campus = campus;
     }
     

@@ -1,5 +1,7 @@
 package br.cefetmg.mockloginapi.entity;
 
+import br.cefetmg.mockloginapi.entity.Departamento;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,17 +17,19 @@ public class Usuario {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "usuarioid")
     private int id;
     
     private String nome;
-    private String cpf;
     private String senha;
-    private String email;
+    private String cpf;
+    private String foto;
     
     @ManyToOne
-    @JoinColumn(name = "departamentoid")
+    @JoinColumn(name = "id_departamento")
     private Departamento departamento;
+
+    @Column (name = "tipo_usuario")
+    private String tipoUsuario;
 
     //Getters
     public int getId() {
@@ -36,16 +40,20 @@ public class Usuario {
         return nome;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
     public String getSenha() {
         return senha;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public String getFoto() {
+        return foto;
     }
 
     public Departamento getDepartamento() {
@@ -62,22 +70,26 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
     public void setSenha(String senha) {
         this.senha = senha;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
     }
-    
-    
+
+
     
 }

@@ -1,8 +1,6 @@
 package br.cefetmg.mockloginapi.dao;
 
 import br.cefetmg.mockloginapi.entity.Departamento;
-import br.cefetmg.mockloginapi.entity.Usuario;
-
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -23,7 +21,7 @@ public class DepartamentoDAO implements DaoInterface<Departamento> {
     @Override
     public Departamento getById(int id, EntityManager em) {
 
-        String jpql = "SELECT d FROM departamento d WHERE d.departamentoid = %d".formatted(id);
+        String jpql = "SELECT d FROM Departamento d WHERE d.id = %d".formatted(id);
 
         TypedQuery<Departamento> query = em.createQuery(jpql, Departamento.class);
 
@@ -40,7 +38,7 @@ public class DepartamentoDAO implements DaoInterface<Departamento> {
     @Override
     public Departamento getByName(String name, EntityManager em) {
 
-        String jpql = "SELECT d FROM departamento d WHERE d.nome LIKE '%s'".formatted(name);
+        String jpql = "SELECT d FROM Departamento d WHERE d.nome LIKE '%s'".formatted(name);
 
         TypedQuery<Departamento> query = em.createQuery(jpql, Departamento.class);
 

@@ -1,6 +1,5 @@
 package br.cefetmg.mockloginapi.entity;
 
-import br.cefetmg.mockloginapi.entity.Departament;
 import java.sql.Blob;
 import javax.annotation.processing.Generated;
 import javax.persistence.metamodel.SingularAttribute;

@@ -1,16 +1,24 @@
 package br.cefetmg.mockloginapi.dto;
-import br.cefetmg.mockloginapi.entity.Departamento;
 
 public class UsuarioDTO {
 
     private int id;
 
     private String nome;
-    private String cpf;
     private String senha;
-    private String email;
+    private String cpf;
+    private String foto;
+    private String departamento;
+    private String tipoUsuario;
 
-    private DepartamentoDTO departamento;
+    public UsuarioDTO(int id, String nome, String senha, String cpf, String foto, String departamento) {
+        setId(id);
+        setNome(nome);
+        setSenha(senha);
+        setCpf(cpf);
+        setFoto(foto);
+        setDepartamento(departamento);
+    }
 
     //Getters
     public int getId() {
@@ -29,11 +37,15 @@ public class UsuarioDTO {
         return senha;
     }
 
-    public String getEmail() {
-        return email;
+    public String getFoto() {
+        return foto;
     }
 
-    public DepartamentoDTO getDepartamento() {
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public String getDepartamento() {
         return departamento;
     }
 
@@ -55,11 +67,15 @@ public class UsuarioDTO {
         this.senha = senha;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
-    public void setDepartamento(DepartamentoDTO departamento) {
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public void setDepartamento(String departamento) {
         this.departamento = departamento;
     }
 
