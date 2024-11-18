@@ -20,7 +20,7 @@ public class Departamento {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     
     private String nome;
     private String telefone;
@@ -31,7 +31,7 @@ public class Departamento {
     private List<Usuario> funcionarios;
 
     //Getters
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -57,7 +57,7 @@ public class Departamento {
 
     
     //Setters
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

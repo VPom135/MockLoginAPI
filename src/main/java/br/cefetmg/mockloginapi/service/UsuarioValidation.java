@@ -34,7 +34,7 @@ public class UsuarioValidation {
 
     //public validateLogin
     public static UsuarioDTO validateLogin(String login, String senha, boolean useNomeAsLogin)
-                                        throws UserNotFoundException, IncorrectPasswordException {
+            throws UserNotFoundException, IncorrectPasswordException {
 
         EntityManager em = getEntityManager();
 
@@ -55,6 +55,13 @@ public class UsuarioValidation {
         }
 
         return EntityToDTO.ConvertUsuario(user);
+
+    }
+
+    public static UsuarioDTO validateLogin(String login, String senha)
+            throws UserNotFoundException, IncorrectPasswordException {
+
+        return validateLogin(login, senha, false);
 
     }
 

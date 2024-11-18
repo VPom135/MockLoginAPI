@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MockLoginAPI:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MockLoginAPI_jar</output-path>
+    <root id="archive" name="MockLoginAPI.jar">
+      <element id="module-output" name="MockLoginAPI" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jetbrains/annotations/26.0.1/annotations-26.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/javax.persistence-api-2.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

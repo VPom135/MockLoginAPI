@@ -6,14 +6,14 @@ import java.util.List;
 
 public class DepartamentoDTO {
 
-    private int id;
+    private long id;
 
     private String nome;
     private String telefone;
     private String email;
     private String campus;
 
-    public DepartamentoDTO(int id, String nome, String telefone, String email, String campus) {
+    public DepartamentoDTO(long id, String nome, String telefone, String email, String campus) {
         setId(id);
         setNome(nome);
         setTelefone(telefone);
@@ -22,7 +22,7 @@ public class DepartamentoDTO {
     }
 
     //Getters
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -44,7 +44,7 @@ public class DepartamentoDTO {
 
 
     //Setters
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

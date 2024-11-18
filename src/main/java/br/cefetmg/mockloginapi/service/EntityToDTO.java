@@ -7,10 +7,9 @@ public class EntityToDTO {
 
     static public UsuarioDTO ConvertUsuario(Usuario entity) {
 
-        String departamentNome = entity.getDepartamento().getNome();
-
-        UsuarioDTO uDTO = new UsuarioDTO(entity.getId(), entity.getNome(), entity.getCpf(),
-                          entity.getSenha(), entity.getFoto(), departamentNome);
+        UsuarioDTO uDTO = new UsuarioDTO(entity.getId(), entity.getNome(), entity.getEmail(),
+                entity.getSenha(), entity.getCpf(), entity.getFoto(), entity.getTipoUsuario(),
+                entity.getDepartamento().getNome());
 
         return uDTO;
 
