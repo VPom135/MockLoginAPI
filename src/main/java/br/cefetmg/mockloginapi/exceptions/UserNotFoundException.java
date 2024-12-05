@@ -1,9 +1,7 @@
 package br.cefetmg.mockloginapi.exceptions;
 
-public class UserNotFoundException extends Exception {
-
-    public UserNotFoundException(String message) {
-        super(message);
+public class UserNotFoundException extends InvalidLoginException {
+    public UserNotFoundException() {
+        super("Usuário não encontrado no sistema.");
     }
-
 }

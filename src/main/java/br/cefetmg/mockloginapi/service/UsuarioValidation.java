@@ -34,7 +34,7 @@ public class UsuarioValidation {
 
     //public validateLogin
     public static UsuarioDTO validateLogin(String login, String senha, boolean useNomeAsLogin)
-            throws UserNotFoundException, IncorrectPasswordException {
+            throws InvalidLoginException {
 
         EntityManager em = getEntityManager();
 
@@ -47,11 +47,11 @@ public class UsuarioValidation {
             user = userDao.getByCpf(login, em);
 
         if (user == null) {
-            throw new UserNotFoundException("Usuário não encontrado no sistema.");
+            throw new UserNotFoundException();
         }
 
         if (!user.getSenha().equals(senha)) {
-            throw new IncorrectPasswordException("Senha incorreta.");
+            throw new IncorrectPasswordException();
         }
 
         return EntityToDTO.ConvertUsuario(user);
@@ -59,7 +59,7 @@ public class UsuarioValidation {
     }
 
     public static UsuarioDTO validateLogin(String login, String senha)
-            throws UserNotFoundException, IncorrectPasswordException {
+            throws InvalidLoginException {
 
         return validateLogin(login, senha, false);
 

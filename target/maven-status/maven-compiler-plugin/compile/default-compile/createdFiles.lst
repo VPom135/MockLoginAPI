@@ -9,7 +9,7 @@ br\cefetmg\mockloginapi\service\EntityToDTO.class
 br\cefetmg\mockloginapi\dao\DaoInterface.class
 br\cefetmg\mockloginapi\entity\Usuario.class
 br\cefetmg\mockloginapi\exceptions\UserNotFoundException.class
-br\cefetmg\mockloginapi\Main.class
+br\cefetmg\mockloginapi\exceptions\InvalidLoginException.class
 br\cefetmg\mockloginapi\service\UsuarioValidation.class
 br\cefetmg\mockloginapi\entity\Usuario_.class
 br\cefetmg\mockloginapi\dao\UsuarioDAO.class

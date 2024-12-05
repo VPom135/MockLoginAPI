@@ -1,9 +1,7 @@
 package br.cefetmg.mockloginapi.exceptions;
 
-public class IncorrectPasswordException extends Exception {
-
-    public IncorrectPasswordException(String message) {
-        super(message);
+public class IncorrectPasswordException extends InvalidLoginException {
+    public IncorrectPasswordException() {
+        super("Senha inválida.");
     }
-
 }
