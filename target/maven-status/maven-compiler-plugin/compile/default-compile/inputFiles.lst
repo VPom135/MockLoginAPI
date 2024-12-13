@@ -5,9 +5,7 @@ E:\Dev\TCC\MockLoginAPI\src\main\java\br\cefetmg\mockloginapi\dto\DepartamentoDT
 E:\Dev\TCC\MockLoginAPI\src\main\java\br\cefetmg\mockloginapi\dto\UsuarioDTO.java
 E:\Dev\TCC\MockLoginAPI\src\main\java\br\cefetmg\mockloginapi\entity\Departamento.java
 E:\Dev\TCC\MockLoginAPI\src\main\java\br\cefetmg\mockloginapi\entity\Usuario.java
-E:\Dev\TCC\MockLoginAPI\src\main\java\br\cefetmg\mockloginapi\exceptions\IncorrectPasswordException.java
-E:\Dev\TCC\MockLoginAPI\src\main\java\br\cefetmg\mockloginapi\exceptions\InvalidLoginException.java
-E:\Dev\TCC\MockLoginAPI\src\main\java\br\cefetmg\mockloginapi\exceptions\UserNotFoundException.java
+E:\Dev\TCC\MockLoginAPI\src\main\java\br\cefetmg\mockloginapi\exceptions\InvalidLoginCredentialsException.java
 E:\Dev\TCC\MockLoginAPI\src\main\java\br\cefetmg\mockloginapi\service\DepartamentoInfo.java
 E:\Dev\TCC\MockLoginAPI\src\main\java\br\cefetmg\mockloginapi\service\EntityToDTO.java
 E:\Dev\TCC\MockLoginAPI\src\main\java\br\cefetmg\mockloginapi\service\UsuarioValidation.java

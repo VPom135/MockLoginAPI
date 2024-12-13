@@ -4,12 +4,10 @@ br\cefetmg\mockloginapi\entity\Departamento.class
 br\cefetmg\mockloginapi\entity\Departamento_.class
 br\cefetmg\mockloginapi\service\DepartamentoInfo.class
 br\cefetmg\mockloginapi\dao\DepartamentoDAO.class
-br\cefetmg\mockloginapi\exceptions\IncorrectPasswordException.class
 br\cefetmg\mockloginapi\service\EntityToDTO.class
 br\cefetmg\mockloginapi\dao\DaoInterface.class
 br\cefetmg\mockloginapi\entity\Usuario.class
-br\cefetmg\mockloginapi\exceptions\UserNotFoundException.class
-br\cefetmg\mockloginapi\exceptions\InvalidLoginException.class
+br\cefetmg\mockloginapi\exceptions\InvalidLoginCredentialsException.class
 br\cefetmg\mockloginapi\service\UsuarioValidation.class
 br\cefetmg\mockloginapi\entity\Usuario_.class
 br\cefetmg\mockloginapi\dao\UsuarioDAO.class
